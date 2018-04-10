@@ -1,19 +1,8 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <title>Laravel</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+@section('content')
 
-    <!-- Styles -->
+    <h1>Post Page {{$id}} {{$name }} {{$password}}</h1>
 
-</head>
-<body>
-<h1>Post{{$id}} {{$name}} {{$password}} </h1>
-</body>
-</html>
+@stop
