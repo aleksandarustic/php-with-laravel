@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,9 +13,9 @@
 |
 */
 //
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 //
 //Route::get('/about', function () {
 //    return 'Hi there this is about page';
@@ -65,4 +67,23 @@ Route::get('/delete',function (){
     $deleted = DB::delete('DELETE FROM posts WHERE id = ?',[1]);
 
     return $deleted;
+});
+
+Route::get('/basicinsert2',function(){
+     $post = POST::find(1);
+     $post->title = 'New ORM title 2';
+     $post->content = 'WOW eloquent is realy cool. Look at this content 2';
+     $post->save();
+});
+Route::get('/insert',function(){
+     POST::create(['title' => 'test1','content'=> 'test content']);
+     
+});
+Route::get('/update',function(){
+    Post::where('id',2)->where('is_admin',0)->update(['title' => 'Updated title','content' => 'Updatet content']);
+     
+});
+
+Route::delete('/delete',function(){
+    
 });
