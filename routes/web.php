@@ -60,9 +60,70 @@
 //});
 
 
-Route::get('/delete',function (){
+//Route::get('/delete',function (){
+//
+//    $deleted = DB::delete('DELETE FROM posts WHERE id = ?',[1]);
+//
+//    return $deleted;
+//});
+
+
+//  ELOQUENT
+
+Route::get('/read',function (){
+
+    $posts = Post::all();
+    foreach ($posts as $post){
+        return $post->title;
+    }
+});
+//
+//Route::get('/find',function (){
+//     $post = Post::find(1);
+//     return $post->title;
+//});
+
+Route::get('/findwhere',function (){
+
+    $post = Post::where('id',1)->orderBy('id','desc')->take(1)->get();
+
+    return $post;
+});
+
+Route::get('/findmore',function (){
+
+    $posts = Post::findOrFail(1);
+
+    return $posts;
+});
+
+Route::get('/delete0',function (){
 
     $deleted = DB::delete('DELETE FROM posts WHERE id = ?',[1]);
 
     return $deleted;
 });
+
+Route::get('/delete',function (){
+    $post =  POST::find(1);
+    $post->delete();
+});
+
+Route::get('/delete2',function (){
+    Post::destroy(3);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
