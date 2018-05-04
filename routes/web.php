@@ -1,5 +1,5 @@
 <?php
-
+use App\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,11 +37,11 @@
 //
 //Route::get('/post/{id}/{name}/{password}','PostController@show_post');
 
-//Route::get('/insert',function (){
-//
-//    DB::insert('INSERT into posts(title,content) VALUES (?,?)',['THIS IS LARAVEL TITLE','THIS IS CONTENT']);
-//
-//});
+Route::get('/insert',function (){
+
+    DB::insert('INSERT into posts(title,content) VALUES (?,?)',['THIS IS LARAVEL TITLE','THIS IS CONTENT']);
+
+});
 //Route::get('/read',function (){
 //
 //    $results = DB::select('SELECT * FROM posts WHERE id = ?',[1]);
@@ -113,6 +113,10 @@ Route::get('/delete2',function (){
     Post::destroy(3);
 });
 
+Route::get('/softdelete',function(){
+    $post = Post::find(2);
+    $post->delete();    
+});
 
 
 
